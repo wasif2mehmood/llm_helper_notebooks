@@ -1,0 +1,132 @@
+adapter: qlora
+base_model: microsoft/Phi-3.5-mini-instruct
+bf16: auto
+
+
+dataset_prepared_path: null
+datasets:
+- path: wasifis/training_data
+  type: alpaca_chat.load_qa
+  
+debug: null
+deepspeed: deepspeed_configs/zero2.json
+early_stopping_patience: null
+eval_table_size: null
+evals_per_epoch: null
+flash_attention: true
+fp16: null
+fsdp: null
+fsdp_config: null
+gradient_accumulation_steps: 8
+gradient_checkpointing: true
+group_by_length: false
+learning_rate: 2.0e-05
+
+load_in_4bit: true
+load_in_8bit: false
+
+local_rank: null
+logging_steps: 1
+lora_alpha: 64
+lora_dropout: 0.05
+lora_fan_in_fan_out: null
+lora_model_dir: null
+lora_r: 32
+lora_target_linear: true
+lora_target_modules:
+  - model.layers.2.mlp.down_proj
+  - model.layers.3.mlp.down_proj
+  - model.layers.1.mlp.down_proj
+  - model.layers.23.mlp.down_proj
+  - model.layers.4.mlp.down_proj
+  - model.layers.26.mlp.down_proj
+  - model.layers.25.mlp.down_proj
+  - model.layers.24.mlp.down_proj
+  - model.layers.28.mlp.down_proj
+  - model.layers.27.mlp.down_proj
+  - model.layers.22.mlp.down_proj
+  - model.layers.29.mlp.down_proj
+  - model.layers.5.mlp.down_proj
+  - model.layers.21.mlp.down_proj
+  - model.layers.30.mlp.down_proj
+  - model.layers.6.mlp.down_proj
+  - model.layers.31.mlp.gate_up_proj
+  - model.layers.4.mlp.gate_up_proj
+  - model.layers.3.mlp.gate_up_proj
+  - model.layers.5.mlp.gate_up_proj
+  - model.layers.6.mlp.gate_up_proj
+  - model.layers.2.mlp.gate_up_proj
+  - model.layers.30.mlp.gate_up_proj
+  - model.layers.9.mlp.gate_up_proj
+  - model.layers.28.mlp.gate_up_proj
+  - model.layers.8.mlp.gate_up_proj
+  - model.layers.29.mlp.gate_up_proj
+  - model.layers.7.mlp.gate_up_proj
+  - model.layers.27.mlp.gate_up_proj
+  - model.layers.11.mlp.gate_up_proj
+  - model.layers.26.mlp.gate_up_proj
+  - model.layers.10.mlp.gate_up_proj
+  - model.layers.0.self_attn.o_proj
+  - model.layers.1.self_attn.o_proj
+  - model.layers.10.self_attn.o_proj
+  - model.layers.11.self_attn.o_proj
+  - model.layers.9.self_attn.o_proj
+  - model.layers.3.self_attn.o_proj
+  - model.layers.19.self_attn.o_proj
+  - model.layers.8.self_attn.o_proj
+  - model.layers.4.self_attn.o_proj
+  - model.layers.15.self_attn.o_proj
+  - model.layers.21.self_attn.o_proj
+  - model.layers.16.self_attn.o_proj
+  - model.layers.14.self_attn.o_proj
+  - model.layers.2.self_attn.o_proj
+  - model.layers.6.self_attn.o_proj
+  - model.layers.20.self_attn.o_proj
+  - model.layers.23.self_attn.qkv_proj
+  - model.layers.24.self_attn.qkv_proj
+  - model.layers.22.self_attn.qkv_proj
+  - model.layers.26.self_attn.qkv_proj
+  - model.layers.27.self_attn.qkv_proj
+  - model.layers.25.self_attn.qkv_proj
+  - model.layers.28.self_attn.qkv_proj
+  - model.layers.29.self_attn.qkv_proj
+  - model.layers.31.self_attn.qkv_proj
+  - model.layers.20.self_attn.qkv_proj
+  - model.layers.18.self_attn.qkv_proj
+  - model.layers.21.self_attn.qkv_proj
+  - model.layers.19.self_attn.qkv_proj
+  - model.layers.30.self_attn.qkv_proj
+  - model.layers.17.self_attn.qkv_proj
+  - model.layers.16.self_attn.qkv_proj
+  - lm.head
+    
+lr_scheduler: cosine
+micro_batch_size: 3
+model_type: AutoModelForCausalLM
+num_epochs: 1
+optimizer: paged_adamw_32bit
+output_dir: ./outputs/Qwen2-7B
+pad_to_sequence_len: true
+resume_from_checkpoint: null
+sample_packing: null
+save_steps: null
+save_strategy: null
+saves_per_epoch: null
+sequence_len: 8000
+special_tokens:
+  pad_token: <|endoftext|>
+
+strict: false
+tf32: false
+tokenizer_type: AutoTokenizer
+train_on_inputs: false
+trust_remote_code: true
+val_set_size: 0.001
+wandb_entity: null
+wandb_log_model: null
+wandb_name: null
+wandb_project: qwen-2-wo-8K
+wandb_watch: null
+warmup_steps: 20
+weight_decay: 0.0
+xformers_attention: null
